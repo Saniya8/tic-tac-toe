@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Game.css';
 import Board from './Board';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Game() {
+
+    const notify = () => toast("Wow so easy!");
 
     const [count, setCount] = useState(Array(9).fill(null));
     // console.log("State is", count)
 
-    const [xturn, setXTurn] = useState(true);
+    const [userturn, setUserTurn] = useState('');
 
     const handleClick = (index) => {
+        if (count[index] !== null) {
+            return;
+        }
         const copyCount = [...count];
-        copyCount[index] = xturn ? 'x' : 'o'
+        copyCount[index] = userturn === 'x' ? 'o' : 'x';
         setCount(copyCount)
-        setXTurn(!xturn)
+        setUserTurn(copyCount[index])
     }
 
     const winnerLogic = () => {
@@ -30,7 +38,7 @@ function Game() {
         for (let items of logic) {
             const [x, y, z] = items;
             if (count[x] == count[y] && count[x] == count[z] && count[x] != null) {
-                return true;
+                return count[x];
             }
         }
         return false;
@@ -38,11 +46,22 @@ function Game() {
 
     const winner = winnerLogic();
 
+    const playAgain = () => {
+        setCount(Array(9).fill(null));
+    }
+
+    const tie = () => {
+        if (count.every((value) => value !== null)) {
+            return 'It is a Tie!'; // Return 'Tie' if all cells are filled and there is no winner
+        }
+    }
+
     return (
         <div>
-            {winner ? (<>Someone won</>) :
+            {winner ? (<>{winner} won the game.</>) : tie() ? (<>{tie()}</>) :
                 (
                     <>
+                        <h1>Player {userturn === 'x' ? 'o' : 'x'} please move on</h1>
                         <div className='game-container'>
                             <div className='game-row'>
                                 <button onClick={() => handleClick(0)}><Board value={count[0]} /></button>
@@ -59,6 +78,10 @@ function Game() {
                                 <button onClick={() => handleClick(7)}><Board value={count[7]} /></button>
                                 <button onClick={() => handleClick(8)}><Board value={count[8]} /></button>
                             </div>
+                            <button onClick={playAgain}>Play again</button>
+
+                            <button onClick={notify}>Invite your friend</button>
+                            <ToastContainer />
                         </div>
                     </>
                 )
