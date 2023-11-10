@@ -7,23 +7,44 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Game() {
 
-    const notify = () => toast("Wow so easy!");
-
     const [count, setCount] = useState(Array(9).fill(null));
-    // console.log("State is", count)
-
     const [userturn, setUserTurn] = useState('');
 
+    // player's logic
     const handleClick = (index) => {
         if (count[index] !== null) {
             return;
         }
         const copyCount = [...count];
-        copyCount[index] = userturn === 'x' ? 'o' : 'x';
+        copyCount[index] = 'x';
         setCount(copyCount)
-        setUserTurn(copyCount[index])
+        setUserTurn('o')
     }
 
+    // Computer's logic
+    const computerLogic = (count) => {
+        const emptyArray = [];
+        for (let i = 0; i < 9; i++) {
+            if (count[i] == null) {
+                emptyArray.push(i)
+            }
+        }
+        const randomIndex = Math.floor(Math.random() * emptyArray.length);
+        return emptyArray[randomIndex]
+    }
+
+    // game play
+    useEffect(() => {
+        if (userturn === 'o') {
+            const empty = computerLogic(count)
+            const copyCount = [...count];
+            copyCount[empty] = 'o';
+            setCount(copyCount)
+            setUserTurn('x')
+        }
+    }, [count, userturn])
+
+    // Winner
     const winnerLogic = () => {
         const logic = [
             [0, 1, 2],
@@ -46,22 +67,27 @@ function Game() {
 
     const winner = winnerLogic();
 
-    const playAgain = () => {
-        setCount(Array(9).fill(null));
-    }
-
+    // Tie logic
     const tie = () => {
         if (count.every((value) => value !== null)) {
             return 'It is a Tie!'; // Return 'Tie' if all cells are filled and there is no winner
         }
     }
 
+    // Play again
+    const playAgain = () => {
+        setCount(Array(9).fill(null));
+    }
+
+    // Notification toast
+    const notify = () => toast("Invite link copied");
+
     return (
         <div>
             {winner ? (<>{winner} won the game.</>) : tie() ? (<>{tie()}</>) :
                 (
                     <>
-                        <h1>Player {userturn === 'x' ? 'o' : 'x'} please move on</h1>
+                        <h1>{userturn === 'x' ? 'o' : 'x'} turn</h1>
                         <div className='game-container'>
                             <div className='game-row'>
                                 <button onClick={() => handleClick(0)}><Board value={count[0]} /></button>
