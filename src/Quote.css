@@ -1,9 +1,24 @@
 .quote-container {
     display: flex;
     flex-direction: column;
-    height: 35vh;
+    height: 50vh;
+    /* height: 100%; */
     width: 20%;
     background-color: #192A32;
+    text-align: center;
     justify-content: center;
     gap: 1rem;
+    border-radius: 25px;
+}
+
+.quote-title {
+    color: #31C4BE;
+}
+
+.quote-p {
+    color: #F2B237;
+}
+
+.quote-container img{
+    width: 100px;
 }

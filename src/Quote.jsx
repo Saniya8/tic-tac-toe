@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import './Quote.css'
+import Image from './assets/image_2.png'
 
 function Quote() {
 
@@ -28,8 +29,9 @@ function Quote() {
 
     return (
         <div className='quote-container'>
-            <h1>You can see data here</h1>
-            <p>{quote}</p>
+            <h1 className='quote-title'>Quote #1</h1>
+            <p className='quote-p'>"{quote}"</p>
+            <img src={Image} alt="image" />
         </div>
     )
 }
