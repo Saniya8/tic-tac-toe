@@ -1,0 +1,9 @@
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    height: 35vh;
+    width: 20%;
+    background-color: #192A32;
+    justify-content: center;
+    gap: 1rem;
+}

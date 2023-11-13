@@ -89,44 +89,46 @@ function Game() {
     const notify = () => toast("Invite link copied");
 
     return (
-        <div className='home'>
-            {gameStarted ? (
-                <p>Current Turn: {userturn === 'x' ? 'x turn' : 'o turn'}</p>
-            ) : (
-                <div>
-                    <p>Choose 'x' or 'o' to start:</p>
-                    <button onClick={() => handlePlayerChoice('x')}>Choose X</button>
-                    <button onClick={() => handlePlayerChoice('o')}>Choose O</button>
-                </div>
-            )}
-            {winner ? (<>{winner} won the game.</>) : tie() ? (<>{tie()}</>) :
-                (
-                    <>
-                        {/* <h1>{userturn === 'x' ? 'o' : 'x'} turn</h1> */}
-                        <div className='game-container'>
-                            <div className='game-row'>
-                                <button onClick={() => handleClick(0)}><Board value={count[0]} /></button>
-                                <button onClick={() => handleClick(1)}><Board value={count[1]} /></button>
-                                <button onClick={() => handleClick(2)}><Board value={count[2]} /></button>
-                            </div>
-                            <div className='game-row'>
-                                <button onClick={() => handleClick(3)}><Board value={count[3]} /></button>
-                                <button onClick={() => handleClick(4)}><Board value={count[4]} /></button>
-                                <button onClick={() => handleClick(5)}><Board value={count[5]} /></button>
-                            </div>
-                            <div className='game-row'>
-                                <button onClick={() => handleClick(6)}><Board value={count[6]} /></button>
-                                <button onClick={() => handleClick(7)}><Board value={count[7]} /></button>
-                                <button onClick={() => handleClick(8)}><Board value={count[8]} /></button>
-                            </div>
-                            <button onClick={playAgain}>Play again</button>
+        <div className='container'>
+            <div className='home'>
+                {gameStarted ? (
+                    <p>Current Turn: {userturn === 'x' ? 'x turn' : 'o turn'}</p>
+                ) : (
+                    <div>
+                        <p>Choose 'x' or 'o' to start:</p>
+                        <button onClick={() => handlePlayerChoice('x')}>Choose X</button>
+                        <button onClick={() => handlePlayerChoice('o')}>Choose O</button>
+                    </div>
+                )}
+                {winner ? (<>{winner} won the game.</>) : tie() ? (<>{tie()}</>) :
+                    (
+                        <>
+                            {/* <h1>{userturn === 'x' ? 'o' : 'x'} turn</h1> */}
+                            <div className='game-container'>
+                                <div className='game-row'>
+                                    <button onClick={() => handleClick(0)}><Board value={count[0]} /></button>
+                                    <button onClick={() => handleClick(1)}><Board value={count[1]} /></button>
+                                    <button onClick={() => handleClick(2)}><Board value={count[2]} /></button>
+                                </div>
+                                <div className='game-row'>
+                                    <button onClick={() => handleClick(3)}><Board value={count[3]} /></button>
+                                    <button onClick={() => handleClick(4)}><Board value={count[4]} /></button>
+                                    <button onClick={() => handleClick(5)}><Board value={count[5]} /></button>
+                                </div>
+                                <div className='game-row'>
+                                    <button onClick={() => handleClick(6)}><Board value={count[6]} /></button>
+                                    <button onClick={() => handleClick(7)}><Board value={count[7]} /></button>
+                                    <button onClick={() => handleClick(8)}><Board value={count[8]} /></button>
+                                </div>
+                                <button onClick={playAgain}>Play again</button>
 
-                            <button onClick={notify}>Invite your friend</button>
-                            <ToastContainer />
-                        </div>
-                    </>
-                )
-            }
+                                <button onClick={notify}>Invite your friend</button>
+                                <ToastContainer />
+                            </div>
+                        </>
+                    )
+                }
+            </div>
         </div>
     )
 }
