@@ -9,16 +9,17 @@ function Game() {
 
     const [count, setCount] = useState(Array(9).fill(null));
     const [userturn, setUserTurn] = useState('');
+    const [gameStarted, setGameStarted] = useState(false);
 
     // player's logic
     const handleClick = (index) => {
-        if (count[index] !== null) {
+        if (count[index] !== null || !gameStarted) {
             return;
         }
         const copyCount = [...count];
-        copyCount[index] = 'x';
+        copyCount[index] = userturn;
         setCount(copyCount)
-        setUserTurn('o')
+        setUserTurn(userturn === 'x' ? 'o' : 'x')
     }
 
     // Computer's logic
@@ -33,16 +34,21 @@ function Game() {
         return emptyArray[randomIndex]
     }
 
+    const handlePlayerChoice = (choice) => {
+        setUserTurn(choice);
+        setGameStarted(true);
+    };
+
     // game play
     useEffect(() => {
-        if (userturn === 'o') {
+        if (userturn === 'o' && gameStarted) {
             const empty = computerLogic(count)
             const copyCount = [...count];
             copyCount[empty] = 'o';
             setCount(copyCount)
             setUserTurn('x')
         }
-    }, [count, userturn])
+    }, [count, userturn, gameStarted])
 
     // Winner
     const winnerLogic = () => {
@@ -83,11 +89,20 @@ function Game() {
     const notify = () => toast("Invite link copied");
 
     return (
-        <div>
+        <div className='home'>
+            {gameStarted ? (
+                <p>Current Turn: {userturn === 'x' ? 'x turn' : 'o turn'}</p>
+            ) : (
+                <div>
+                    <p>Choose 'x' or 'o' to start:</p>
+                    <button onClick={() => handlePlayerChoice('x')}>Choose X</button>
+                    <button onClick={() => handlePlayerChoice('o')}>Choose O</button>
+                </div>
+            )}
             {winner ? (<>{winner} won the game.</>) : tie() ? (<>{tie()}</>) :
                 (
                     <>
-                        <h1>{userturn === 'x' ? 'o' : 'x'} turn</h1>
+                        {/* <h1>{userturn === 'x' ? 'o' : 'x'} turn</h1> */}
                         <div className='game-container'>
                             <div className='game-row'>
                                 <button onClick={() => handleClick(0)}><Board value={count[0]} /></button>
