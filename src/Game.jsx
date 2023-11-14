@@ -4,6 +4,8 @@ import Board from './Board';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import x_image from './assets/x.png';
+import o_image from './assets/o.png';
 
 function Game() {
 
