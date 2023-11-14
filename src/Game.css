@@ -17,6 +17,8 @@
     align-items: center;
     flex-direction: column;
     border-radius: 25px;
+    border: 2px solid red;
+    padding: 1rem;
 }
 
 .game-container {
@@ -27,11 +29,43 @@
     justify-items: center;
     padding: 1rem;
 }
-    
+
 .game-row {
     display: flex;
 }
 
 .game-row button {
     padding: 2rem;
+}
+
+.main-img {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 0 10px 0;
+}
+
+.home-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    background-color: #1F3540;
+    border-radius: 7px;
+    border-style: none;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    gap: 1rem;
+}
+
+.home-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.home-content button {
+    background-color: transparent;
+    border-style: none;
 }

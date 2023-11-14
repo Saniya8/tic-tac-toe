@@ -92,7 +92,20 @@ function Game() {
 
     return (
         <div className='container'>
+
             <div className='home'>
+                <div className='main-img'>
+                    <img src={x_image} alt="x" />
+                    <img src={o_image} alt="o" />
+                </div>
+
+                <div className='home-box'>
+                    <div className='pick-player'>PICK PLAYER</div>
+                    <div className='home-content'>
+                        <button><img src={x_image} alt="x" /></button>
+                        <button><img src={o_image} alt="o" /></button>
+                    </div>
+                </div>
                 {gameStarted ? (
                     <p>Current Turn: {userturn === 'x' ? 'x turn' : 'o turn'}</p>
                 ) : (
