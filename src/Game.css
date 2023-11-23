@@ -4,12 +4,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
-
+    z-index: 0;
+    position: absolute;
 }
 
 .home {
-    width: 30%;
+    width: 28%;
     height: 90vh;
     background-color: #192A32;
     display: flex;
@@ -17,7 +17,6 @@
     align-items: center;
     flex-direction: column;
     border-radius: 25px;
-    border: 2px solid red;
     padding: 1rem;
 }
 
