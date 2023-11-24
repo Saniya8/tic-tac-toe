@@ -113,8 +113,6 @@ const PlayBoard = () => {
                                 <button onClick={() => handleClick(8)}><Board value={count[8]} /></button>
                             </div>
                             <button onClick={playAgain}>Play again</button>
-
-
                         </div>
                     </>
                 )

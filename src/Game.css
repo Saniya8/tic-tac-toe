@@ -9,7 +9,7 @@
 }
 
 .home {
-    width: 28%;
+    width: 25%;
     height: 90vh;
     background-color: #192A32;
     display: flex;
@@ -95,6 +95,4 @@
 .box {
     width: 100%;
     padding: 0.5rem 2rem 1rem 2rem;
-    border: 2px solid red;
-
 }

@@ -1,7 +1,6 @@
 .display-main {
     width: 100%;
-    border: 2px solid red;
-    padding: 0.5rem 2rem 1rem 2rem;
+    padding: 1rem 2rem;
 }
 
 .display-box {
@@ -10,4 +9,37 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    gap: 4rem;
+}
+
+.display-box button {
+    width: 100%;
+    border-radius: 3px;
+    border-style: none;
+    padding: 0.5rem 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.display-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    flex-direction: column;
+}
+
+.display-three .invite-button {
+    padding: 0.5rem 2.5rem;
+    cursor: pointer;
+    background: #F2B237;
+}
+
+.cpu-game {
+    background: #F2B237;
+}
+
+.human-game {
+    background: #32C4C3;
 }
