@@ -14,7 +14,7 @@ const Display = () => {
             <div className='display-main'>
                 <div className='display-box'>
                     <div className='display-two'>
-                        <button className='cpu-game' onClick={console.log("Button clicked")}>NEW GAME ( VS CPU )</button>
+                        <button className='cpu-game' onClick={<PlayBoard />}>NEW GAME ( VS CPU )</button>
                         <button className='human-game'>NEW GAME ( VS HUMAN ) Coming soon</button>
                     </div>
                     <div className='display-three'>
