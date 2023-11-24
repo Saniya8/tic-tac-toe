@@ -99,11 +99,13 @@ function Game() {
                     <img src={o_image} alt="o" />
                 </div>
 
-                <div className='home-box'>
-                    <div className='pick-player'>PICK PLAYER</div>
-                    <div className='home-content'>
-                        <button><img src={x_image} alt="x" /></button>
-                        <button><img src={o_image} alt="o" /></button>
+                <div className='box'>
+                    <div className='home-box'>
+                        <div className='pick-player'>PICK PLAYER</div>
+                        <div className='home-content'>
+                            <button><img src={x_image} alt="x" /></button>
+                            <button><img src={o_image} alt="o" /></button>
+                        </div>
                     </div>
                 </div>
                 {gameStarted ? (
